@@ -1,23 +1,38 @@
 package br.com.xuitter.xuitter_api.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "user")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 10)
+    @Pattern(regexp = "\\w+")
+    @NotBlank
+    @Size(max = 10)
     private String username;
 
-    @Column(name = "create_at", nullable = false)
+    @NotNull
     private LocalDateTime createAt;
 
-    // Getters e Setters
+    @Deprecated
+    protected User() {}
+
+    // Construtor usado nos testes
+    public User(String username) {
+        this.username = username;
+        this.createAt = LocalDateTime.now();
+    }
+
+    // Getters
     public Long getId() {
         return id;
     }
@@ -26,7 +41,7 @@ public class User {
         return username;
     }
 
-    public LocalDateTime getCreateAt() {
+    public LocalDateTime getCreatedAt() {
         return createAt;
     }
 }
