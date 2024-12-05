@@ -47,17 +47,17 @@ This is a partial clone project of the social network **X** (formerly known as T
 
 ### 1. Clone the repository:
 ```bash
-$ git clone https://github.com/your-username/x-clone.git
+$ git clone https://github.com/danisluz/xuitter-api.git
 ```
 
 ### 2. Configure the database:
 Create a PostgreSQL database named `x_clone`.
 Update the `application.properties` file with your credentials:
 ```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/x_clone
-spring.datasource.username=your_username
-spring.datasource.password=your_password
-spring.jpa.hibernate.ddl-auto=update
+spring.datasource.url=jdbc:mysql://localhost:3306/xuitter?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 ```
 
 ### 3. Build and run the project:
@@ -77,15 +77,16 @@ Open your browser and go to: [http://localhost:8080](http://localhost:8080)
 src/
 ├── main/
 │   ├── java/
-│   │   ├── com.example.xclone/
-│   │       ├── controller/
-│   │       ├── service/
-│   │       ├── repository/
-│   │       ├── model/
-│   │       └── config/
+│   │   ├── br.com.xuitter.xuitter_api/
+│   │       ├── controllers/
+│   │       ├── dtos/
+│   │       ├── entities/
+│   │       └── repositories/
 │   └── resources/
-│       ├── application.properties
-│       └── data.sql
+│       ├── db.migration/
+│       ├── static/
+│       ├── templates/
+│       └── application.properties
 └── test/
 ```
 
