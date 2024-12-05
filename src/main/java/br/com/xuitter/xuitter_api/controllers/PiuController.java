@@ -8,6 +8,6 @@ public class PiuController {
 
     @GetMapping("/piu")
     public String piu(){
-        return "Passaro";
+        return "\uD83D\uDC26";
     }
 }

@@ -3,11 +3,10 @@ package br.com.xuitter.xuitter_api.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Entity
+@Table(name = "xuit")
 public class Xuit {
 
     public enum XuitType {
@@ -24,25 +23,22 @@ public class Xuit {
 
     @Enumerated(EnumType.STRING)
     @NotNull
-    @Column(columnDefinition = "enum('ORIGINAL', 'REXUIT', 'QUOTE')")
     private XuitType type;
 
     @NotNull
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "author_id", nullable = false)
     private User author;
 
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "original_xuit_id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Xuit originalXuit;
 
     @NotNull
+    @Column(name = "create_at", nullable = false)
     private LocalDateTime createdAt;
 
-    @Deprecated
-    protected Xuit(){}
-
-
-    //Getters
+    // Getters
     public Long getId() {
         return id;
     }
@@ -59,8 +55,8 @@ public class Xuit {
         return author;
     }
 
-    public Optional<Xuit> getOriginalXuit() {
-        return Optional.ofNullable(originalXuit);
+    public Xuit getOriginalXuit() {
+        return originalXuit;
     }
 
     public LocalDateTime getCreatedAt() {
