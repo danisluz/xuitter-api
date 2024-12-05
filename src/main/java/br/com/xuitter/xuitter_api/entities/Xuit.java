@@ -28,11 +28,11 @@ public class Xuit {
     private Xuit originalXuit;
 
     @ManyToOne
-    @JoinColumn(name = "author_id", nullable = false) // Define o relacionamento com o autor
+    @JoinColumn(name = "author_id", nullable = false)
     private User author;
 
     @NotNull
-    @Column(name = "create_at", nullable = false) // Ajustado para mapear a coluna no banco de dados
+    @Column(name = "create_at", nullable = false)
     private LocalDateTime createdAt;
 
     @Deprecated

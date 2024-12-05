@@ -26,7 +26,6 @@ public class User {
     @Deprecated
     protected User() {}
 
-    // Construtor usado nos testes
     public User(String username) {
         this.username = username;
         this.createAt = LocalDateTime.now();
