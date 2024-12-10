@@ -24,6 +24,6 @@ public class PiuControllerTest {
 
         mockMvc.perform(get("/piu"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Passaro"));
+                .andExpect(content().string("\uD83D\uDC26"));
     }
 }
